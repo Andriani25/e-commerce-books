@@ -1,10 +1,12 @@
 import express, { Application } from "express";
+import { connectDB } from "./db";
 import morgan from "morgan";
 import cors from "cors";
 import routes from "./routes";
 
 // Initialization
 
+connectDB();
 const server: Application = express();
 
 // Configurations
