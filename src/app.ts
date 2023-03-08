@@ -3,6 +3,8 @@ import morgan from "morgan";
 import cors from "cors";
 import routes from "./routes";
 
+// Initialization
+
 const server: Application = express();
 
 // Configurations
