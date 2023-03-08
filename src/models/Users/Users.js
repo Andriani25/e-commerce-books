@@ -21,8 +21,15 @@ const userSchema = new mongoose_1.Schema({
     password: { type: String, required: true },
     home: { type: String },
     avatar: String,
-}, {
-    timestamps: true,
+    shoppingCart: {
+        Array: [
+            {
+                totalItems: Number,
+                totalValue: Number,
+                bookNames: String,
+            },
+        ],
+    },
 });
 userSchema.methods.encryptPassword = (password) => __awaiter(void 0, void 0, void 0, function* () {
     const salt = yield bcryptjs_1.default.genSalt(10);
