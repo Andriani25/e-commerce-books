@@ -1,7 +1,18 @@
 import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs";
 
-const userSchema = new Schema({
+export interface IUser {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  home?: string;
+  avatar?: string;
+  shoppingCart: [];
+  encryptPassword(arg: string): string;
+}
+
+const userSchema = new Schema<IUser>({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, unique: true, lowercase: true, required: true },
@@ -28,4 +39,4 @@ userSchema.methods.matchPassword = async function (password: string) {
   return await bcrypt.compare(password, this.password);
 };
 
-export default model("user", userSchema);
+export default model<IUser>("user", userSchema);
