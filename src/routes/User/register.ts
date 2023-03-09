@@ -1,8 +1,9 @@
 import { Router, Request, Response } from "express";
-import User from "./User/index.user";
 
 const router = Router();
 
-router.use("/user", User);
+router.get("/", (req: Request, res: Response) => {
+  res.send("register page");
+});
 
 export default router;
