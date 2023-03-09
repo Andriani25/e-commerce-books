@@ -2,8 +2,8 @@ import { Router, Request, Response } from "express";
 
 const router = Router();
 
-router.post("/", (req: Request, res: Response) => {
-  res.send("register user");
+router.get("/", (req: Request, res: Response) => {
+  res.send("List of books");
 });
 
 export default router;

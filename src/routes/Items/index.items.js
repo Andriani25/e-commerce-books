@@ -4,9 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const index_user_1 = __importDefault(require("./User/index.user"));
-const index_items_1 = __importDefault(require("./Items/index.items"));
+const booksList_1 = __importDefault(require("./booksList"));
+const bookAdd_1 = __importDefault(require("./bookAdd"));
 const router = (0, express_1.Router)();
-router.use("/user", index_user_1.default);
-router.use("/book", index_items_1.default);
+router.use("/", booksList_1.default);
+router.use("/add", bookAdd_1.default);
 exports.default = router;
