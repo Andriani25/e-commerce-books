@@ -14,18 +14,15 @@ const bookSchema = new Schema(
       type: Number,
       required: true,
     },
+    price: Number,
+
     editorial: {
       type: String,
       required: true,
     },
     autor: String,
-    stock: {
-      type: Number,
-      required: true,
-    },
-    distributor: {
-      Array: [String],
-    },
+    stock: Number,
+    distributor: String,
   },
   {
     timestamps: true,

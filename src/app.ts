@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import { connectDB } from "./db";
 import morgan from "morgan";
+import bodyParser from "body-parser";
 import cors from "cors";
 import routes from "./routes";
 
@@ -14,6 +15,7 @@ const server: Application = express();
 server.set("port", process.env.PORT || 3000);
 
 // Middlewares
+server.use(bodyParser.json());
 server.use(morgan("dev"));
 server.use(
   cors({
