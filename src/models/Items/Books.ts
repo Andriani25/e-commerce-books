@@ -23,6 +23,9 @@ const bookSchema = new Schema(
       type: Number,
       required: true,
     },
+    distributor: {
+      Array: [String],
+    },
   },
   {
     timestamps: true,

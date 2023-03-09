@@ -18,6 +18,9 @@ const itemsSchema = new mongoose_1.Schema({
         type: Number,
         required: true,
     },
+    distributor: {
+        Array: [String],
+    },
 }, {
     timestamps: true,
 });
