@@ -29,13 +29,18 @@ router.put("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             if (nuevaCantidad < 0) {
                 return res.status(400).send("¡Es imposible poner un Stock negativo!");
             }
-            const result = yield book.updateOne({ ISBN: ISBN }, {
-                $set: { stock: Number(nuevaCantidad) },
-            });
-            console.log("Documento actualizado", result);
-            if (result) {
-                return res.status(200).send(`¡Stock del libro ${tittle} actualizado! `);
+            const stockRenovado = (book.stock = nuevaCantidad);
+            if (stockRenovado) {
+                yield book.save();
             }
+            // const result = await book.updateOne(
+            //   { ISBN: ISBN },
+            //   {
+            //     $set: { stock: Number(nuevaCantidad) },
+            //   }
+            // );
+            // console.log("Documento actualizado", result);
+            return res.status(200).send(`¡Stock del libro ${tittle} actualizado! `);
         }
     }
     catch (error) {

@@ -24,18 +24,22 @@ router.put("/", async (req: Request, res: Response) => {
         return res.status(400).send("¡Es imposible poner un Stock negativo!");
       }
 
-      const result = await book.updateOne(
-        { ISBN: ISBN },
-        {
-          $set: { stock: Number(nuevaCantidad) },
-        }
-      );
+      const stockRenovado = (book.stock = nuevaCantidad);
 
-      console.log("Documento actualizado", result);
-
-      if (result) {
-        return res.status(200).send(`¡Stock del libro ${tittle} actualizado! `);
+      if (stockRenovado) {
+        await book.save();
       }
+
+      // const result = await book.updateOne(
+      //   { ISBN: ISBN },
+      //   {
+      //     $set: { stock: Number(nuevaCantidad) },
+      //   }
+      // );
+
+      // console.log("Documento actualizado", result);
+
+      return res.status(200).send(`¡Stock del libro ${tittle} actualizado! `);
     }
   } catch (error) {
     res.status(400).send(error);
